@@ -1,13 +1,16 @@
 .customTaskList {
     display: flex;
     flex-direction: column;
-    width: 100%;
+    width: 90%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1rem 1rem;
 }
 
 .headerRow {
     display: flex;
     font-weight: bold;
-    border-bottom: 2px solid black;
+    border-bottom: 1px solid black;
     padding: 1rem 0;
 }
 
@@ -21,11 +24,12 @@ ul {
     display: flex;
     border-bottom: 1px solid black;
     padding: 1rem 0;
+    margin-bottom: 1rem;
 }
 
 .column {
-    flex: 1; 
+    flex: 1;
     padding: 0.5rem;
-    word-break: break-word; 
+    word-break: break-word;
     text-align: center;
 }
