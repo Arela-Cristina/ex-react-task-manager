@@ -1,12 +1,18 @@
-import { useState } from 'react'
-
-
+import { BrowserRouter, Routes, Route } from "react-router"
 
 function App() {
 
 
   return (
-    <div>Hello World</div>
+    <>
+      <div>Div di debug</div>
+      <BrowserRouter>
+        <Routes>
+          
+        </Routes>
+      </BrowserRouter>
+    </>
+
   )
 }
 
