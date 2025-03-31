@@ -1,17 +1,24 @@
-import { BrowserRouter, Routes, Route } from "react-router"
+import { BrowserRouter, Routes, Route } from "react-router";
+import Index from "./Index";
+import AddTask from "./pages/AddTask";
+import TaskList from './pages/TaskList'
+
+
 
 function App() {
 
 
   return (
-    <>
-      <div>Div di debug</div>
-      <BrowserRouter>
-        <Routes>
-          
-        </Routes>
-      </BrowserRouter>
-    </>
+
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Index />}>
+          <Route path="addTask" element={<AddTask />} />
+          <Route path="taskList" element={<TaskList />} />
+        </Route>
+      </Routes>
+    </BrowserRouter >
+
 
   )
 }
