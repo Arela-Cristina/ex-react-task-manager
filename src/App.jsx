@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router";
 import { useState, useEffect } from "react";
 import taskContext from './global-context/TaskGlobalContext'
-import Index from "./Index";
+import Index from "./DefaultLayout";
 import AddTask from "./pages/AddTask";
 import TaskList from './pages/TaskList'
 
