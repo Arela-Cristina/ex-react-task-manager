@@ -1,0 +1,30 @@
+.customTaskList {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-bottom: 1rem;
+}
+
+.titleTaskList {
+    text-align: center;
+    padding: 2rem 2rem;
+    border-radius: 8px;
+    font-weight: bolder;
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    list-style: korean-hangul-formal;
+    padding: 0;
+    margin-left: 3rem;
+    margin-right: 2rem;
+
+}
+
+li {
+    border-bottom: 1px solid black;
+    padding-bottom: 5px;
+}

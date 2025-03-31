@@ -1,9 +1,12 @@
+
+
 export default function AddTask() {
 
     return (
+        <div>Add Task</div>
 
-        <div>Add Task Page</div>
-        
+
+
     )
 
 }
