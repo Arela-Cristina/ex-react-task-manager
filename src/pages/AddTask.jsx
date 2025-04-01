@@ -5,9 +5,12 @@ export default function AddTask() {
 
 
     const [name, setName] = useState('')
-    console.log('name', name)
+    // console.log('name', name)
 
-    const descrizioneRef = useRef()
+    const descriptionRef = useRef();
+
+    const stateRef = useRef(null)
+    console.log('stato', stateRef)
 
     return (
 
@@ -28,15 +31,20 @@ export default function AddTask() {
                 <input
                     name='descrizione'
                     type="text"
-                    ref={descrizioneRef}
-                    onChange={(e) => { e.target.descrizioneRef }}
+                    ref={descriptionRef}
+                    onChange={(e) => { e.target.descriptionRef }}
                 />
             </div>
 
             <div>
                 <div>Stato</div>
-                <select name="" id="">
-                    <option value={null}>Selezziona stato</option>
+                <select
+                    name="state"
+                    id="state"
+                    ref={stateRef}
+                    onChange={() => { console.log(stateRef.current.value) }}>
+
+                    <option value='null'>Selezziona stato</option>
                     <option value="toDo">To Do</option>
                     <option value="doing">Doing</option>
                     <option value="done">Done</option>
