@@ -20,16 +20,3 @@ ul {
     list-style: none;
 }
 
-.row {
-    display: flex;
-    border-bottom: 1px solid black;
-    padding: 1rem 0;
-    margin-bottom: 1rem;
-}
-
-.column {
-    flex: 1;
-    padding: 0.5rem;
-    word-break: break-word;
-    text-align: center;
-}
