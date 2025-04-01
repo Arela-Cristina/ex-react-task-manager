@@ -11,3 +11,21 @@
     word-break: break-word;
     text-align: center;
 }
+
+.toDo {
+    background-color: #ff6868;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+}
+
+.doing {
+    background-color: #ffbe5e;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+}
+
+.done {
+    background-color: #a2d961;
+    padding: 1rem 1rem;
+    border-radius: 5px;
+}
