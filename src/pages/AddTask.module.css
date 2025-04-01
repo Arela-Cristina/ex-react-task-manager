@@ -1,0 +1,19 @@
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+    border: 1px solid black;
+    padding: 2rem 2rem;
+    border-radius: 12px;
+}
+
+.textError {
+    color: red;
+    font-size: 13px
+}
+
+.textCorrect {
+    color: rgb(14, 14, 14);
+    font-size: 13px
+}
