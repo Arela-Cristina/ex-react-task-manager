@@ -33,11 +33,14 @@ export default function AddTask() {
     function handleSubmit(e) {
         e.preventDefault()
 
+        const description = descriptionRef.current.value
+        const stato = stateRef.current.value
+
         console.log('oggetto',
             {
-                name: name,
-                description: descriptionRef.current.value,
-                stato: stateRef.current.value
+                name,
+                description,
+                stato
 
             }
         )
@@ -67,8 +70,6 @@ export default function AddTask() {
                         )}
                 </div>
 
-
-
                 <div>
                     <div>Descrizione</div>
                     <input
@@ -96,9 +97,7 @@ export default function AddTask() {
 
                 <button type='submit'> Aggiungi</button>
 
-
             </form >
-
         </>
 
     )
