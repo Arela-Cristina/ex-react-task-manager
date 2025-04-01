@@ -8,7 +8,7 @@ import TaskRow from '../component/TaskRow'
 export default function TaskList() {
 
     const { tasks } = useContext(taskContext)
-    console.log('ecco mi', tasks)
+    // console.log('ecco mi', tasks)
 
     return (
         <>
