@@ -30,11 +30,25 @@ export default function AddTask() {
         setName(newName);
     }
 
+    function handleSubmit(e) {
+        e.preventDefault()
+
+        console.log('oggetto',
+            {
+                name: name,
+                description: descriptionRef.current.value,
+                stato: stateRef.current.value
+
+            }
+        )
+
+    }
+
     return (
         <>
             <h2>Planner</h2>
 
-            <form onSubmit={() => { }}>
+            <form onSubmit={handleSubmit}>
 
                 <div>
                     <div>Nome del task </div>
@@ -80,7 +94,7 @@ export default function AddTask() {
                     </select>
                 </div>
 
-                <button type="submit"> Aggiungi</button>
+                <button type='submit'> Aggiungi</button>
 
 
             </form >
