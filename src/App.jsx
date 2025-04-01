@@ -1,35 +1,19 @@
 import { BrowserRouter, Routes, Route } from "react-router";
-import { useState, useEffect } from "react";
 import taskContext from './global-context/TaskGlobalContext'
 import Index from "./DefaultLayout";
 import AddTask from "./pages/AddTask";
 import TaskList from './pages/TaskList'
+import useTasks from "./custom Hooks/useTasks";
 
-const BASE_API = import.meta.env.VITE_API_URL;
 
 function App() {
 
 
-  const [tasks, setTask] = useState([])
-
-  async function fetchTasks() {
-    try {
-      const response = await fetch(`${BASE_API}/tasks`);
-      const data = await response.json();
-      setTask(data)
-      // console.log('data:', data)
-    } catch (error) {
-      console.error(`error fetching taks.`, error)
-    }
-  }
-
-  useEffect(() => {
-    fetchTasks();
-  }, [])
+  const  taskData = useTasks()
 
   return (
     
-    <taskContext.Provider value={{ tasks, setTask }}>
+    <taskContext.Provider value={{ ...taskData }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />}>
