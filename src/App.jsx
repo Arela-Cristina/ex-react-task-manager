@@ -10,14 +10,14 @@ const BASE_API = import.meta.env.VITE_API_URL;
 function App() {
 
 
-  const [task, setTask] = useState([])
+  const [tasks, setTask] = useState([])
 
   async function fetchTasks() {
     try {
       const response = await fetch(`${BASE_API}/tasks`);
       const data = await response.json();
       setTask(data)
-      console.log('data:', data)
+      // console.log('data:', data)
     } catch (error) {
       console.error(`error fetching taks.`, error)
     }
@@ -29,7 +29,7 @@ function App() {
 
   return (
     
-    <taskContext.Provider value={{ task, setTask }}>
+    <taskContext.Provider value={{ tasks, setTask }}>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />}>
