@@ -1,9 +1,13 @@
-import { useState } from "react"
+import { useState, useRef } from "react"
 
 export default function AddTask() {
 
+
+
     const [name, setName] = useState('')
     console.log('name', name)
+
+    const descrizioneRef = useRef()
 
     return (
 
@@ -12,6 +16,7 @@ export default function AddTask() {
             <div>
                 <div>Nome del task </div>
                 <input
+                    name='name'
                     type="text"
                     value={name}
                     onChange={(e) => { setName(e.target.value) }}
@@ -20,7 +25,12 @@ export default function AddTask() {
 
             <div>
                 <div>Descrizione</div>
-                <input type="text" />
+                <input
+                    name='descrizione'
+                    type="text"
+                    ref={descrizioneRef}
+                    onChange={(e) => { e.target.descrizioneRef }}
+                />
             </div>
 
             <div>
