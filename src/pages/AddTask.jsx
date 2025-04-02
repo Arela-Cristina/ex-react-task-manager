@@ -1,13 +1,17 @@
-import { useState, useRef } from "react"
+import { useState, useRef, useContext } from "react"
+import taskContext from "../global-context/TaskGlobalContext"
 import style from './AddTask.module.css'
 
 export default function AddTask() {
+
+    const { addTask } = useContext(taskContext)
 
     const [name, setName] = useState('')
     console.log(name)
     const [controlName, setControlName] = useState(true)
     const descriptionRef = useRef(null);
     const stateRef = useRef(null)
+
 
 
     function handleNameChange(e) {
@@ -30,20 +34,30 @@ export default function AddTask() {
         setName(newName);
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
+        if (!controlName)
+            return;
 
-        const description = descriptionRef.current.value
-        const stato = stateRef.current.value
+        const newTask = {
+            title: name.trim(),
+            description: descriptionRef.current.value,
+            status: stateRef.current.value
+        }
 
-        console.log('oggetto',
-            {
-                name,
-                description,
-                stato
+        console.log('status', stateRef.current.value)
 
-            }
-        )
+        try {
+            await addTask(newTask)
+            alert('Task aggiunta con Succeso')
+            setName('')
+            descriptionRef.current.value = ''
+            stateRef.current.value = ''
+
+        } catch (error) {
+            alert(error.message)
+
+        }
 
     }
 
@@ -88,10 +102,10 @@ export default function AddTask() {
                         ref={stateRef}>
 
 
-                        <option value='null'>Selezziona stato</option>
-                        <option value="toDo">To Do</option>
-                        <option value="doing">Doing</option>
-                        <option value="done">Done</option>
+                        <option value=''>Selezziona stato</option>
+                        <option value="To do">To Do</option>
+                        <option value="Doing">Doing</option>
+                        <option value="Done">Done</option>
                     </select>
                 </div>
 
