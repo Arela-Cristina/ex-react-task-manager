@@ -38,7 +38,7 @@ function useTasks() {
     }
 
     async function removeTask(deletedTaskId) {
-        console.log("Debuging:", deletedTaskId);
+        // console.log("id task:", deletedTaskId);
 
         const response = await fetch(`${BASE_API}/tasks/${deletedTaskId}`, {
             method: 'DELETE',
@@ -49,21 +49,38 @@ function useTasks() {
 
         if (!success) throw new Error(message || 'task non cancellata')
 
-        setTask((prevTasks) => prevTasks.filter(task => task.id !== deletedTaskId));
+        setTask(prevTasks => prevTasks.filter(task => task.id !== deletedTaskId));
+    }
+
+
+    async function correctTask(updatedTask) {
+        console.log("id update task:", updatedTask);
+        const response = await fetch(`${BASE_API}/tasks/${updatedTask.id}`, {
+            method: 'PUT',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(updatedTask),
+        });
+
+        const { success, message, task } = await response.json();
+
+        if (!success) throw new Error(message || 'task  non aggiornata')
+
+        setTask(prevTasks => prevTasks.map(
+            oldTask => oldTask.id === task.id ? task : oldTask
+        ))
+
+
     }
 
 
 
 
-    function updateTask() {
-        console.log('updateTask')
-    }
 
     useEffect(() => {
         fetchData()
     }, [])
 
-    return { tasks, addTask, removeTask, updateTask }
+    return { tasks, addTask, removeTask, correctTask }
 }
 
 export default useTasks
