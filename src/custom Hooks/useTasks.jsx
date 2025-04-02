@@ -20,7 +20,6 @@ function useTasks() {
 
 
     // funzioni
-
     async function addTask(newTask) {
         console.log("Debuging:", newTask);
 
@@ -38,9 +37,23 @@ function useTasks() {
 
     }
 
-    function removeTask() {
-        console.log('removeTask')
+    async function removeTask(deletedTaskId) {
+        console.log("Debuging:", deletedTaskId);
+
+        const response = await fetch(`${BASE_API}/tasks/${deletedTaskId}`, {
+            method: 'DELETE',
+            headers: { "Content-Type": "application/json" },
+        });
+
+        const { success, message } = await response.json();
+
+        if (!success) throw new Error(message || 'task non cancellata')
+
+        setTask((prevTasks) => prevTasks.filter(task => task.id !== deletedTaskId));
     }
+
+
+
 
     function updateTask() {
         console.log('updateTask')
