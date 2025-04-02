@@ -45,7 +45,6 @@ export default function AddTask() {
             status: stateRef.current.value
         }
 
-        console.log('status', stateRef.current.value)
 
         try {
             await addTask(newTask)
