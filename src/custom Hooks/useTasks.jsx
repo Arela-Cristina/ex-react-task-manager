@@ -21,8 +21,21 @@ function useTasks() {
 
     // funzioni
 
-    function addTaks() {
-        console.log('addTaks')
+    async function addTask(newTask) {
+        console.log("Debuging:", newTask);
+
+        const response = await fetch(`${BASE_API}/tasks`, {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(newTask),
+        });
+
+        const { success, message, task } = await response.json();
+
+        if (!success) throw new Error(message || 'Error nella API');
+
+        setTask((prevTasks) => [...prevTasks, task]);
+
     }
 
     function removeTask() {
@@ -38,7 +51,7 @@ function useTasks() {
         fetchData()
     }, [])
 
-    return { tasks, addTaks, removeTask, updateTask }
+    return { tasks, addTask, removeTask, updateTask }
 }
 
 export default useTasks
