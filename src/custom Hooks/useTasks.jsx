@@ -46,7 +46,6 @@ function useTasks() {
         console.log('updateTask')
     }
 
-
     useEffect(() => {
         fetchData()
     }, [])
