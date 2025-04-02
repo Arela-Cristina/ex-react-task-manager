@@ -1,3 +1,4 @@
+import { Link } from 'react-router';
 import style from './TaskRow.module.css';
 import React from 'react'
 
@@ -8,10 +9,19 @@ function TaskRow({ task }) {
     return (
 
         <li className={style.row} key={task.id}>
-            <div className={style.column}> {task.title} </div>
-            <div className={`${style.column}, ${getStatusClass(task.status)}`}> {task.status} </div>
-            <div className={style.column}> {task.createdAt} </div>
-        </li>
+
+            <Link to={`/task/${task.id}`} className={style.column}>
+                {task.title}
+            </Link>
+
+            <div className={`${style.column}, ${getStatusClass(task.status)}`}>
+                {task.status}
+            </div>
+
+            <div className={style.column}>
+                {task.createdAt}
+            </div>
+        </li >
     )
 }
 
