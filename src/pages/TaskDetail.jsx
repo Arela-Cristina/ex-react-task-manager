@@ -4,7 +4,7 @@ import taskContext from "../global-context/TaskGlobalContext"
 
 export default function TaskDetail() {
 
-    const { id } = useParams();
+    const { id } = useParams(); //ritorna una stringa
     const { tasks } = useContext(taskContext)
 
     console.log('task Details', tasks)
@@ -18,7 +18,6 @@ export default function TaskDetail() {
 
     return (
         <section>
-
 
             <h2>Nome: {task.title}</h2>
             <div>Descrizione: {task.description}</div>
