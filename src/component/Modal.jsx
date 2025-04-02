@@ -15,7 +15,7 @@ export default function Modal({
         <div className={style.modalOverlay}>
             <div className={style.modalContent}>
                 <h2>{title}</h2>
-                <p>{content}</p>
+                <div>{content}</div>
                 <button onClick={onClose}>Chiudi</button>
                 <button onClick={onConfirm}>{confirmText}</button>
             </div>
