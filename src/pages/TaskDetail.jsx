@@ -2,18 +2,20 @@ import { useParams, useNavigate } from "react-router";
 import { useContext, useState } from "react"
 import taskContext from "../global-context/TaskGlobalContext"
 import Modal from "../component/Modal";
+import EditTaskModal from "../component/EditTaskModal";
 
 
 export default function TaskDetail() {
 
     const [showModal, setShowModal] = useState(false)
+    const [showUpdateModal, setShowUpdateModal] = useState(false)
 
     const navigate = useNavigate()
 
-    const { removeTask } = useContext(taskContext)
+    const { tasks, removeTask, correctTask } = useContext(taskContext)
 
     const { id } = useParams(); //ritorna una stringa
-    const { tasks } = useContext(taskContext)
+
 
     console.log('task Details', tasks)
 
@@ -30,11 +32,21 @@ export default function TaskDetail() {
         try {
 
             await removeTask(task.id)
-            navigate('/taskList')
-            alert('Taks Eliminata con Sucesso')
+            navigate('/taskList');
+            
+        } catch (error) {
+            alert(error.message)
+        }
+    }
+
+    async function handleUpdate(updateTask) {
+        try {
+
+            await correctTask(updateTask)
+            setShowUpdateModal(false)
 
         } catch (error) {
-            alert('Errore ricevuto')
+            alert(error.message)
         }
     }
 
@@ -45,9 +57,8 @@ export default function TaskDetail() {
             <div>Descrizione: {task.description}</div>
             <div>Stato: {task.status}</div>
             <div>Data di Creazione: {task.createdAt}</div>
-            <button onClick={() => setShowModal(true)}>Elimina Task
-
-            </button>
+            <button onClick={() => setShowModal(true)}>Elimina Task</button>
+            <button onClick={() => setShowUpdateModal(true)}>Modifica Task</button>
 
             <Modal
                 title='Modale di Conferma'
@@ -56,6 +67,13 @@ export default function TaskDetail() {
                 onClose={() => { setShowModal(false) }}
                 onConfirm={handleClick}
                 confirmText='Elimina'
+            />
+
+            <EditTaskModal
+                task={task}
+                show={showUpdateModal}
+                onClose={() => { setShowUpdateModal(false) }}
+                onSave={handleUpdate}
             />
 
         </section>
