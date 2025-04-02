@@ -10,9 +10,12 @@ function TaskRow({ task }) {
 
         <li className={style.row} key={task.id}>
 
-            <Link to={`/task/${task.id}`} className={style.column}>
-                {task.title}
-            </Link>
+            {/* debug */}
+            <div className={style.column}>
+                <Link to={`/task/${task.id}`}>
+                    {task.title}
+                </Link>
+            </div>
 
             <div className={`${style.column}, ${getStatusClass(task.status)}`}>
                 {task.status}
