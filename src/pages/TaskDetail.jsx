@@ -1,9 +1,12 @@
 import { useParams, useNavigate } from "react-router";
-import { useContext } from "react"
+import { useContext, useState } from "react"
 import taskContext from "../global-context/TaskGlobalContext"
+import Modal from "../component/Modal";
 
 
 export default function TaskDetail() {
+
+    const [showModal, setShowModal] = useState(false)
 
     const navigate = useNavigate()
 
@@ -25,6 +28,7 @@ export default function TaskDetail() {
     async function handleClick() {
 
         try {
+
             await removeTask(task.id)
             navigate('/taskList')
             alert('Taks Eliminata con Sucesso')
@@ -41,9 +45,18 @@ export default function TaskDetail() {
             <div>Descrizione: {task.description}</div>
             <div>Stato: {task.status}</div>
             <div>Data di Creazione: {task.createdAt}</div>
-            <button onClick={handleClick}>Elimina Task
+            <button onClick={() => setShowModal(true)}>Elimina Task
 
             </button>
+
+            <Modal
+                title='Modale di Conferma'
+                content={'Sicuro che vuoi eliminare questa task?'}
+                show={showModal}
+                onClose={() => { setShowModal(false) }}
+                onConfirm={handleClick}
+                confirmText='Elimina'
+            />
 
         </section>
     )
