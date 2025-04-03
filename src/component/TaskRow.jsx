@@ -10,7 +10,6 @@ function TaskRow({ task }) {
 
         <li className={style.row} key={task.id}>
 
-            {/* debug */}
             <div className={style.column}>
                 <Link to={`/task/${task.id}`}>
                     {task.title}
@@ -22,7 +21,7 @@ function TaskRow({ task }) {
             </div>
 
             <div className={style.column}>
-                {task.createdAt}
+                {new Date(task.createdAt).toLocaleDateString('it-IT')}
             </div>
         </li >
     )

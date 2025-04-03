@@ -33,7 +33,7 @@ export default function TaskDetail() {
 
             await removeTask(task.id)
             navigate('/taskList');
-            
+
         } catch (error) {
             alert(error.message)
         }
@@ -56,7 +56,7 @@ export default function TaskDetail() {
             <h2>Nome: {task.title}</h2>
             <div>Descrizione: {task.description}</div>
             <div>Stato: {task.status}</div>
-            <div>Data di Creazione: {task.createdAt}</div>
+            <div>Data di Creazione: {new Date(task.createdAt).toLocaleDateString('it-IT')}</div>
             <button onClick={() => setShowModal(true)}>Elimina Task</button>
             <button onClick={() => setShowUpdateModal(true)}>Modifica Task</button>
 
