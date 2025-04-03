@@ -1,8 +1,18 @@
 import style from './TaskList.module.css'
-import { useContext, useState, useMemo } from 'react'
+import { useContext, useState, useMemo, useCallback } from 'react'
 import taskContext from '../global-context/TaskGlobalContext'
 import TaskRow from '../component/TaskRow'
 
+
+function debounce(callback, delay) {
+    let timer;
+    return (value) => {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+            callback(value)
+        }, delay)
+    }
+}
 
 
 export default function TaskList() {
@@ -12,7 +22,9 @@ export default function TaskList() {
 
     // filtro di ricerca
     const [searchQuery, setSearchQuery] = useState('')
+    const debounceSearchQuery = useCallback(debounce(setSearchQuery, 500), [])
     console.log('query', searchQuery)
+
 
     const [sortBy, setSortBy] = useState('createdAt')
 
@@ -72,46 +84,48 @@ export default function TaskList() {
         <>
             <input
                 type="search"
-                value={searchQuery}
-                onChange={(e) => { setSearchQuery(e.target.value) }}
+                placeholder='Cerca una task'
+                // value={searchQuery}
+                onChange={(e) => { debounceSearchQuery(e.target.value) }}
             />
 
-            {!tasks || tasks.length === 0 ? (<p>Cercando tasks ...</p>)
+
+            <section className={style.customTaskList}>
+                <div className={style.headerRow}>
+                    <div
+                        className={style.column}
+                        onClick={() => handleSortClick("title")}>
+                        Nome {sortBy === 'title' && sortArrowIcon}
+                    </div>
 
 
-                : (
-
-                    <section className={style.customTaskList}>
-                        <div className={style.headerRow}>
-                            <div
-                                className={style.column}
-                                onClick={() => handleSortClick("title")}>
-                                Nome {sortBy === 'title' && sortArrowIcon}
-                            </div>
+                    <div
+                        className={style.column}
+                        onClick={() => handleSortClick("status")}>
+                        Stato {sortBy === 'status' && sortArrowIcon}
+                    </div>
 
 
-                            <div
-                                className={style.column}
-                                onClick={() => handleSortClick("status")}>
-                                Stato {sortBy === 'status' && sortArrowIcon}
-                            </div>
+                    <div
+                        className={style.column}
+                        onClick={() => handleSortClick("createdAt")}>
+                        Data di Creazione{sortBy === 'createdAt' && sortArrowIcon}
+                    </div>
 
 
-                            <div
-                                className={style.column}
-                                onClick={() => handleSortClick("createdAt")}>
-                                Data di Creazione{sortBy === 'createdAt' && sortArrowIcon}
-                            </div>
+                </div>
 
+                {!sortTasks || sortTasks.length === 0 ? (<p>Nessuna task trovata</p>) : (
 
-                        </div>
-                        <ul>
-                            {sortTasks.map(task => (
-                                <TaskRow key={task.id} task={task} />
-                            ))}
-                        </ul>
-                    </section>
+                    <ul>
+                        {sortTasks.map(task => (
+                            <TaskRow key={task.id} task={task} />
+                        ))}
+                    </ul>
                 )}
+
+            </section>
+
         </>
     )
 }
