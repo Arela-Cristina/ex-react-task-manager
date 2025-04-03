@@ -13,19 +13,19 @@ function App() {
   const taskData = useTasks()
 
   return (
-
-    <taskContext.Provider value={{ ...taskData }}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="/" element={<Index />}>
-            <Route path="addTask" element={<AddTask />} />
-            <Route path="taskList" element={<TaskList />} />
-            <Route path="/task/:id" element={<TaskDetail />} />
-          </Route>
-        </Routes>
-      </BrowserRouter >
-    </taskContext.Provider>
-
+      <taskContext.Provider value={{ ...taskData }}>
+        <BrowserRouter>
+                <Routes>
+                    <Route path="/" element={<Index />}>
+                        {/* Ruta por defecto, muestra AddTask */}
+                        <Route index element={<AddTask />} /> {/* Aquí usamos `index` para especificar la ruta por defecto */}
+                        <Route path="addTask" element={<AddTask />} />
+                        <Route path="taskList" element={<TaskList />} />
+                        <Route path="task/:id" element={<TaskDetail />} />
+                    </Route>
+                </Routes>
+            </BrowserRouter>
+      </taskContext.Provider>
   )
 }
 

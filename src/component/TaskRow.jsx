@@ -11,8 +11,8 @@ function TaskRow({ task }) {
         <li className={style.row} key={task.id}>
 
 
-            <div className={style.column}>
-                <Link to={`/task/${task.id}`}>
+            <div className={`${style.column} ${style.customTitle}`}>
+            ⭐ <Link to={`/task/${task.id}`}>
                     {task.title}
                 </Link>
             </div>
@@ -22,7 +22,7 @@ function TaskRow({ task }) {
             </div>
 
             <div className={style.column}>
-                {new Date(task.createdAt).toLocaleDateString()}
+            📆 {new Date(task.createdAt).toLocaleDateString()}
             </div>
         </li >
     )

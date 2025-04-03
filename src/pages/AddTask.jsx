@@ -62,12 +62,12 @@ export default function AddTask() {
 
     return (
         <>
-            <h2>Planner</h2>
+            <h2 className={style.title}>Dark Task Manager</h2>
 
             <form onSubmit={handleSubmit}>
 
                 <div>
-                    <div>Nome del task </div>
+                    <div className={style.label}> Nome della task </div>
                     <input
                         name='name'
                         type="text"
@@ -75,17 +75,17 @@ export default function AddTask() {
                         onChange={handleNameChange}
                     />
                     {(!controlName) ? (
-                        <p className={style.textError}>Non può contenere simboli speciali.</p>
+                        <p className={style.textError}>Non può contenere simboli speciali. 😮</p>
                     )
                         : (
-                            <p className={style.textCorrect}>Nome del task puo includere numeri</p>
+                            <p className={style.textCorrect}>Nome del task puo includere numeri 😊</p>
 
                         )}
                 </div>
 
                 <div>
-                    <div>Descrizione</div>
-                    <input
+                    <div className={style.label}>Descrizione</div>
+                    <textarea
                         name='descrizione'
                         type="text"
                         ref={descriptionRef}
@@ -94,7 +94,7 @@ export default function AddTask() {
                 </div>
 
                 <div>
-                    <div>Stato</div>
+                    <div className={style.label}>Stato</div>
                     <select
                         name="state"
                         id="state"

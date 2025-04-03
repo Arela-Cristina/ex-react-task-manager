@@ -1,31 +1,104 @@
 .row {
     display: flex;
-    border-bottom: 1px solid black;
-    padding: 1rem 0;
-    margin-bottom: 1rem;
+    align-items: center;
+    font-family: "Nunito Sans", sans-serif;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    /* Borde más suave y sutil */
+    transition: border-color 0.3s ease;
+    /* Transición suave al cambiar el borde */
+}
+
+.row:hover {
+    border-bottom: 2px solid rgba(93, 95, 95, 0.8);
+    /* Borde dinámico al pasar el mouse */
 }
 
 .column {
     flex: 1;
-    padding: 0.5rem;
-    word-break: break-word;
     text-align: center;
 }
 
+.customTitle {
+    text-align: start;
+}
+
+
+a {
+    font-family: "Nunito Sans", sans-serif;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+a:hover {
+    text-decoration: none;
+    transform: scale(1.05);
+    text-shadow: 0 0 8px rgba(162, 217, 97, 0.6), 0 0 20px rgba(162, 217, 97, 0.4);
+    /* Resplandor sutil en las letras */
+}
+
+a:focus {
+    outline: none;
+    text-shadow: 0 0 8px rgba(162, 217, 97, 0.6), 0 0 20px rgba(162, 217, 97, 0.4);
+    /* Mismo resplandor cuando está enfocado */
+}
+
+
 .toDo {
-    background-color: #ff6868;
-    padding: 1rem 1rem;
-    border-radius: 5px;
+    background-color: rgba(211, 63, 57, 0.8);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.toDo:hover {
+    background-color: rgba(191, 56, 52, 0.9);
+    transform: scale(1.02);
 }
 
 .doing {
-    background-color: #ffbe5e;
-    padding: 1rem 1rem;
-    border-radius: 5px;
+    background-color: rgba(26, 188, 156, 0.8);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.doing:hover {
+    background-color: rgba(21, 174, 137, 0.9);
+    transform: scale(1.02);
 }
 
 .done {
-    background-color: #a2d961;
-    padding: 1rem 1rem;
-    border-radius: 5px;
+    background-color: rgba(43, 195, 121, 0.8);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.done:hover {
+    background-color: rgba(35, 174, 102, 0.9);
+    transform: scale(1.02);
+
+}
+
+
+.inProgress {
+    background-color: rgba(35, 49, 122, 0.8);
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.inProgress:hover {
+    background-color: rgba(27, 40, 92, 0.9);
+    transform: scale(1.02);
 }

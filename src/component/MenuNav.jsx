@@ -4,6 +4,13 @@ import style from './MenuNav.module.css';
 export default function Index() {
     return (
         <section className={style.kawaiiContainer}>
+            {/* <NavLink
+                to="/"
+                className={({ isActive }) => `${style.kawaiiButton} ${isActive ? "active" : ""}`}
+            >
+                 Home
+            </NavLink> */}
+
             <NavLink
                 to="/addTask"
                 className={({ isActive }) => `${style.kawaiiButton} ${isActive ? "active" : ""}`}

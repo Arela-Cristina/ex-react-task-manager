@@ -3,6 +3,7 @@ import { useContext, useState } from "react"
 import taskContext from "../global-context/TaskGlobalContext"
 import Modal from "../component/Modal";
 import EditTaskModal from "../component/EditTaskModal";
+import style from './TaskDetails.module.css'
 
 
 export default function TaskDetail() {
@@ -51,14 +52,17 @@ export default function TaskDetail() {
     }
 
     return (
-        <section>
+        <section className={style.customTaksDetail}>
 
-            <h2>Nome: {task.title}</h2>
-            <div>Descrizione: {task.description}</div>
-            <div>Stato: {task.status}</div>
-            <div>Data di Creazione: {new Date(task.createdAt).toLocaleDateString('it-IT')}</div>
-            <button onClick={() => setShowModal(true)}>Elimina Task</button>
-            <button onClick={() => setShowUpdateModal(true)}>Modifica Task</button>
+            <h2>{task.title}</h2>
+            <div> ✅ Descrizione: {task.description}</div>
+            <div> ✅ Stato: {task.status}</div>
+            <div> ✅ Data di Creazione: {new Date(task.createdAt).toLocaleDateString('it-IT')}</div>
+            <div className={style.modaleButtons}>
+                <button onClick={() => setShowModal(true)}>Elimina Task</button>
+                <button onClick={() => setShowUpdateModal(true)}>Modifica Task</button>
+            </div>
+
 
             <Modal
                 title='Modale di Conferma'

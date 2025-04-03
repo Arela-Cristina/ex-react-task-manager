@@ -7,10 +7,11 @@
 }
 
 body {
-    background-image: url('/public/silksong.jpg');
+    background-image: url('/src/assets/Wallpaper.gif');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
     color: #ffffff;
     line-height: 1.6;
+    cursor: url('./assets/Delicate_Flower.webp') 8 8, pointer;
 }

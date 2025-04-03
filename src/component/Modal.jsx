@@ -16,8 +16,10 @@ export default function Modal({
             <div className={style.modalContent}>
                 <h2>{title}</h2>
                 <div>{content}</div>
-                <button onClick={onClose}>Chiudi</button>
-                <button onClick={onConfirm}>{confirmText}</button>
+                <div className={style.modaleButtons}>
+                    <button onClick={onClose}>Chiudi</button>
+                    <button onClick={onConfirm}>{confirmText}</button>
+                </div>
             </div>
         </div>,
         document.body

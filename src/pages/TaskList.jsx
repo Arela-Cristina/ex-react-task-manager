@@ -40,7 +40,7 @@ export default function TaskList() {
         }
     }
 
-    const sortArrowIcon = sortOrder === 1 ? '🠉' : '🠋';
+    const sortArrowIcon = sortOrder === 1 ? '⬆️' : '⬇️';
 
     // memo per memorizzare il compito di una funzione, ameno che le loro prop cambiano, per assicurare la fluidezza del nostro programmino
     const sortTasks = useMemo(() => {
@@ -82,13 +82,17 @@ export default function TaskList() {
 
     return (
         <>
-            <input
-                type="search"
-                placeholder='Cerca una task'
-                // value={searchQuery}
-                onChange={(e) => { debounceSearchQuery(e.target.value) }}
-            />
 
+
+            <section className={style.sectionInput}>
+                <input
+                    className={style.input}
+                    type="search"
+                    placeholder='Cerca una task'
+                    // value={searchQuery}
+                    onChange={(e) => { debounceSearchQuery(e.target.value) }}
+                />
+            </section>
 
             <section className={style.customTaskList}>
                 <div className={style.headerRow}>

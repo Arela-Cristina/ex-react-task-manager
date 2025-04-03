@@ -1,19 +1,104 @@
+.title {
+    font-family: "Nunito Sans", sans-serif;
+    text-align: center;
+    font-size: 30px;
+    padding-top: 2rem;
+}
+
+
 form {
+    font-family: "Nunito Sans", sans-serif;
+    font-optical-sizing: auto;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 1.5rem;
-    border: 1px solid black;
-    padding: 2rem 2rem;
+    gap: 1.2rem;
+    border: 2px solid #4A4A4A;
+    padding: 2rem;
     border-radius: 12px;
+    background: rgba(50, 50, 70, 0.8);
+    backdrop-filter: blur(8px);
+    color: #ffffff;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.label {
+    font-weight: bold;
+    font-size: 18px;
+}
+
+textarea {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 2px solid #666;
+    border-radius: 8px;
+    outline: none;
+    background: #4b4e60;
+    color: #ffffff;
+    resize: vertical;
+    transition: all 0.3s ease;
+    min-height: 120px;
+}
+
+textarea:focus {
+    border-color: #f1a800;
+    background: #5b5f72;
+}
+
+textarea::placeholder {
+    color: #d1d1d1;
+    opacity: 0.8;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 1rem;
+    border: 2px solid #666;
+    border-radius: 8px;
+    outline: none;
+    background: #4b4e60;
+    color: #ffffff;
+    transition: all 0.3s ease;
+}
+
+input:focus,
+select:focus {
+    border-color: #f1a800;
+    background: #5b5f72;
+}
+
+button {
+    background: #f1a800;
+    color: #222;
+    width: auto;
+    align-self: center;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    font-weight: bold;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #f5c441;
+    transform: scale(1.05);
 }
 
 .textError {
-    color: red;
-    font-size: 13px
+    color: #ff5c5c;
+    font-size: 13px;
+    font-weight: bold;
 }
 
 .textCorrect {
-    color: rgb(14, 14, 14);
-    font-size: 13px
+    color: #9fa1a0;
+    font-size: 13px;
+    font-weight: bold;
 }
