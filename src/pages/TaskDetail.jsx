@@ -54,8 +54,14 @@ export default function TaskDetail() {
     return (
         <section className={style.customTaksDetail}>
 
+
+
             <h2>{task.title}</h2>
-            <div> ✅ Descrizione: {task.description}</div>
+            {task.description &&
+                <div> ✅ Descrizione: {task.description}</div>
+            }
+
+
             <div> ✅ Stato: {task.status}</div>
             <div> ✅ Data di Creazione: {new Date(task.createdAt).toLocaleDateString('it-IT')}</div>
             <div className={style.modaleButtons}>

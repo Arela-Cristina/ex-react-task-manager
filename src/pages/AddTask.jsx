@@ -1,8 +1,12 @@
-import { useState, useRef, useContext } from "react"
+import { useState, useRef, useContext, } from "react"
+import { useNavigate } from "react-router"
 import taskContext from "../global-context/TaskGlobalContext"
 import style from './AddTask.module.css'
 
 export default function AddTask() {
+
+
+    const navigate = useNavigate()
 
     const { addTask } = useContext(taskContext)
 
@@ -52,6 +56,7 @@ export default function AddTask() {
             setName('')
             descriptionRef.current.value = ''
             stateRef.current.value = ''
+            navigate('/taskList');
 
         } catch (error) {
             alert(error.message)
@@ -62,7 +67,7 @@ export default function AddTask() {
 
     return (
         <>
-            <h2 className={style.title}>Dark Task Manager</h2>
+            <h2 className={style.title}>Task Manager</h2>
 
             <form onSubmit={handleSubmit}>
 

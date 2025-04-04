@@ -40,7 +40,7 @@ export default function TaskList() {
         }
     }
 
-    const sortArrowIcon = sortOrder === 1 ? '⬆️' : '⬇️';
+    const sortArrowIcon = sortOrder === 1 ? '⬇️' : '⬆️ ';
 
     // memo per memorizzare il compito di una funzione, ameno che le loro prop cambiano, per assicurare la fluidezza del nostro programmino
     const sortTasks = useMemo(() => {
